@@ -1,0 +1,23 @@
+mindmapDiagram {
+    node {
+        Shadowing 0
+        FontSize 14
+    }
+    rootnode {
+        BackgroundColor LightYellow
+        Margin 40
+        FontSize 20
+        Padding 16
+    }
+    :depth(1) {
+        BackgroundColor LightYellow
+        FontSize 16
+        Padding 12
+    }
+    :depth(2) {
+        BackgroundColor LightYellow
+    }
+    arrow {
+        LineThickness 1.25
+    }
+}
