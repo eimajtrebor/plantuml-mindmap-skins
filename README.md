@@ -6,9 +6,7 @@ A collection of style sheets to import into your PlantUML mindmap diagrams.
 
 ```plantuml
 @startmindmap "mymindmap"
-<style>
-!include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/starter.css
-</style>
+!include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/starter-skin.puml
 
 * Idea
 

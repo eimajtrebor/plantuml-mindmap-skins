@@ -1,3 +1,5 @@
+@startuml "starter-skin"
+<style>
 mindmapDiagram {
     node {
         Shadowing 0
@@ -5,7 +7,6 @@ mindmapDiagram {
     }
     rootnode {
         BackgroundColor LightYellow
-        Margin 40
         FontSize 20
         Padding 16
     }
@@ -21,3 +22,6 @@ mindmapDiagram {
         LineThickness 1.25
     }
 }
+</style>
+@enduml
+
