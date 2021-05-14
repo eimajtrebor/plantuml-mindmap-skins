@@ -2,6 +2,7 @@
 <style>
 mindmapDiagram {
     node {
+        BackgroundColor LightYellow
         Shadowing 0
         FontSize 14
     }
