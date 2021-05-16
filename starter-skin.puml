@@ -1,22 +1,51 @@
 @startuml "starter-skin"
+
+!if (%not(%variable_exists("$DEFAULTBOXCOLOR")))
+!$DEFAULTBOXCOLOR = "#5EEAD4"
+!endif
+
+!if (%not(%variable_exists("$ROOTNODECOLOR")))
+!$ROOTNODECOLOR = "#5EEAD4"
+!endif
+
+!if (%not(%variable_exists("$DEPTH1COLOR")))
+!$DEPTH1COLOR = "#99F6E4"
+!endif
+
+!if (%not(%variable_exists("$DEPTH2COLOR")))
+!$DEPTH2COLOR = "#CCFBF1"
+!endif
+
+!if (%not(%variable_exists("$DEPTH3COLOR")))
+!$DEPTH3COLOR = "#F0FDFA"
+!endif
+
 <style>
 mindmapDiagram {
     node {
+        BackgroundColor DEFAULTBOXCOLOR
         Shadowing 0
-        FontSize 14
+        FontSize 16
     }
     rootnode {
-        BackgroundColor LightYellow
+        BackgroundColor $ROOTNODECOLOR
         FontSize 20
-        Padding 16
+        Padding 30
+        Margin 50
     }
     :depth(1) {
-        BackgroundColor LightYellow
-        FontSize 16
-        Padding 12
+        BackgroundColor $DEPTH1COLOR
+        FontSize 18
+        Padding 20
+        Margin 50
     }
     :depth(2) {
-        BackgroundColor LightYellow
+        BackgroundColor $DEPTH2COLOR
+        Margin 50
+    }
+    :depth(3) {
+        BackgroundColor $DEPTH3COLOR
+        Margin 20
     }
     arrow {
         LineThickness 1.25
@@ -24,4 +53,3 @@ mindmapDiagram {
 }
 </style>
 @enduml
-
