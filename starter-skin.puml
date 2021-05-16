@@ -23,7 +23,7 @@
 <style>
 mindmapDiagram {
     node {
-        BackgroundColor DEFAULTBOXCOLOR
+        BackgroundColor $DEFAULTBOXCOLOR
         Shadowing 0
         FontSize 16
     }
