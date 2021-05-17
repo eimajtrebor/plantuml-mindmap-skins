@@ -1,13 +1,23 @@
 @startuml "starter-skin"
 
-!define DEFAULT_FONT_SIZE 14
+!define DEFAULT_LEVELS 4
+!define DEFAULT_FONT_SIZE 12
+!define DEFAULT_FONT_SCALE 2
 !define DEFAULT_LINE_THICKNESS 1
 !define DEFAULT_LINE_COLOR #333333
 !define DEFAULT_SHADOWING 1
 !define DEFAULT_BACKGROUND_COLOR LightYellow
 
-!if (%not(%variable_exists("$NODE_FONT_SIZE")))
-    !$NODE_FONT_SIZE = DEFAULT_FONT_SIZE
+!if (%not(%variable_exists("$LEVELS")))
+    !$LEVELS = DEFAULT_LEVELS
+!endif
+
+!if (%not(%variable_exists("$FONT_SIZE")))
+    !$FONT_SIZE = DEFAULT_FONT_SIZE
+!endif
+
+!if (%not(%variable_exists("$FONT_SCALE")))
+    !$FONT_SCALE = DEFAULT_FONT_SCALE
 !endif
 
 !if (%not(%variable_exists("$ROOT_BACKGROUND_COLOR")))
@@ -24,6 +34,10 @@
 
 !if (%not(%variable_exists("$DEPTH3_BACKGROUND_COLOR")))
     !$DEPTH3_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
+!endif
+
+!if (%not(%variable_exists("$DEPTH4_BACKGROUND_COLOR")))
+    !$DEPTH4_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
 !endif
 
 !if (%not(%variable_exists("$LINE_THICKNESS")))
@@ -45,24 +59,39 @@
 
 !procedure root_style()
     BackgroundColor $ROOT_BACKGROUND_COLOR
+    FontSize $calc_font(0)
 !endprocedure
 
 !procedure depth1_style()
     BackgroundColor $DEPTH1_BACKGROUND_COLOR
+    FontSize $calc_font(1)
 !endprocedure
 
 !procedure depth2_style()
     BackgroundColor $DEPTH2_BACKGROUND_COLOR
+    FontSize $calc_font(2)
 !endprocedure
 
 !procedure depth3_style()
     BackgroundColor $DEPTH3_BACKGROUND_COLOR
+    FontSize $calc_font(3)
 !endprocedure
+
+!procedure depth4_style()
+    BackgroundColor $DEPTH4_BACKGROUND_COLOR
+    FontSize $calc_font(4)
+!endprocedure
+
+!function $calc_font($level)
+    !$scale = %intval($FONT_SCALE)
+    !$factor = %intval($LEVELS) - %intval($level)
+    !$adjustment = $factor * $scale
+    !return %intval($FONT_SIZE) + $adjustment
+!endfunction
 
 <style>
 mindmapDiagram {
     node {
-        FontSize $NODE_FONT_SIZE
         Shadowing $SHADOWING
     }
     rootNode {
@@ -73,9 +102,12 @@ mindmapDiagram {
     }
     :depth(2) {
         depth2_style()
-    } 
+    }
     :depth(3) {
         depth3_style()
+    }
+    :depth(4) {
+        depth4_style()
     }
     arrow {
         arrow_style()
