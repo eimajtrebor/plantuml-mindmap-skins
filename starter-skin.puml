@@ -1,54 +1,76 @@
 @startuml "starter-skin"
 
-!if (%not(%variable_exists("$DEFAULTBOXCOLOR")))
-!$DEFAULTBOXCOLOR = "#5EEAD4"
+!define DEFAULT_FONT_SIZE 14
+!define DEFAULT_LINE_THICKNESS 1
+!define DEFAULT_LINE_COLOR #333333
+!define DEFAULT_SHADOWING 1
+!define DEFAULT_BACKGROUND_COLOR LightYellow
+
+!if (%not(%variable_exists("ROOT_BACKGROUND_COLOR")))
+    !ROOT_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("$ROOTNODECOLOR")))
-!$ROOTNODECOLOR = "#5EEAD4"
+!if (%not(%variable_exists("DEPTH1_BACKGROUND_COLOR")))
+    !DEPTH1_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("$DEPTH1COLOR")))
-!$DEPTH1COLOR = "#99F6E4"
+!if (%not(%variable_exists("DEPTH2_BACKGROUND_COLOR")))
+    !DEPTH2_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("$DEPTH2COLOR")))
-!$DEPTH2COLOR = "#CCFBF1"
+!if (%not(%variable_exists("DEPTH3_BACKGROUND_COLOR")))
+    !DEPTH3_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("$DEPTH3COLOR")))
-!$DEPTH3COLOR = "#F0FDFA"
+!if (%not(%variable_exists("LINE_THICKNESS")))
+    !LINE_THICKNESS = DEFAULT_LINE_THICKNESS
 !endif
+
+!if (%not(%variable_exists("LINE_COLOR")))
+    !LINE_COLOR = DEFAULT_LINE_COLOR
+!endif
+
+!procedure arrow_style()
+    LineThickness LINE_THICKNESS
+    LineColor LINE_COLOR
+!endprocedure
+
+!procedure root_style()
+    BackgroundColor ROOT_BACKGROUND_COLOR
+!endprocedure
+
+!procedure depth1_style()
+    BackgroundColor DEPTH1_BACKGROUND_COLOR
+!endprocedure
+
+!procedure depth2_style()
+    BackgroundColor DEPTH2_BACKGROUND_COLOR
+!endprocedure
+
+!procedure depth3_style()
+    BackgroundColor DEPTH3_BACKGROUND_COLOR
+!endprocedure
 
 <style>
 mindmapDiagram {
     node {
-        BackgroundColor $DEFAULTBOXCOLOR
-        Shadowing 0
-        FontSize 16
+        FontSize DEFAULT_FONT_SIZE
+        Shadowing DEFAULT_SHADOWING
     }
-    rootnode {
-        BackgroundColor $ROOTNODECOLOR
-        FontSize 20
-        Padding 30
-        Margin 50
+    rootNode {
+        root_style()
     }
     :depth(1) {
-        BackgroundColor $DEPTH1COLOR
-        FontSize 18
-        Padding 20
-        Margin 50
+        depth1_style()
     }
     :depth(2) {
-        BackgroundColor $DEPTH2COLOR
-        Margin 50
-    }
+        depth2_style()
+    } 
     :depth(3) {
-        BackgroundColor $DEPTH3COLOR
-        Margin 20
+        depth3_style()
     }
     arrow {
-        LineThickness 1.25
+        arrow_style()
     }
 }
 </style>
