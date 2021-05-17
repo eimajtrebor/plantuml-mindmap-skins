@@ -6,28 +6,32 @@
 !define DEFAULT_BOX_SHADOWING 1
 !define DEFAULT_BACKGROUND_COLOR LightYellow
 
-!if (%not(%variable_exists("ROOT_BACKGROUND_COLOR")))
-    !ROOT_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
+!if (%not(%variable_exists("$NODE_FONT_SIZE")))
+    !$NODE_FONT_SIZE = DEFAULT_FONT_SIZE
 !endif
 
-!if (%not(%variable_exists("DEPTH1_BACKGROUND_COLOR")))
-    !DEPTH1_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
+!if (%not(%variable_exists("$ROOT_BACKGROUND_COLOR")))
+    !$ROOT_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("DEPTH2_BACKGROUND_COLOR")))
-    !DEPTH2_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
+!if (%not(%variable_exists("$DEPTH1_BACKGROUND_COLOR")))
+    !$DEPTH1_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("DEPTH3_BACKGROUND_COLOR")))
-    !DEPTH3_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
+!if (%not(%variable_exists("$DEPTH2_BACKGROUND_COLOR")))
+    !$DEPTH2_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("LINE_THICKNESS")))
-    !LINE_THICKNESS = DEFAULT_LINE_THICKNESS
+!if (%not(%variable_exists("$DEPTH3_BACKGROUND_COLOR")))
+    !$DEPTH3_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("LINE_COLOR")))
-    !LINE_COLOR = DEFAULT_LINE_COLOR
+!if (%not(%variable_exists("$LINE_THICKNESS")))
+    !$LINE_THICKNESS = DEFAULT_LINE_THICKNESS
+!endif
+
+!if (%not(%variable_exists("$LINE_COLOR")))
+    !$LINE_COLOR = DEFAULT_LINE_COLOR
 !endif
 
 !if (%not(%variable_exists("$SHADOWING")))
@@ -35,30 +39,30 @@
 !endif
 
 !procedure arrow_style()
-    LineThickness LINE_THICKNESS
-    LineColor LINE_COLOR
+    LineThickness $LINE_THICKNESS
+    LineColor $LINE_COLOR
 !endprocedure
 
 !procedure root_style()
-    BackgroundColor ROOT_BACKGROUND_COLOR
+    BackgroundColor $ROOT_BACKGROUND_COLOR
 !endprocedure
 
 !procedure depth1_style()
-    BackgroundColor DEPTH1_BACKGROUND_COLOR
+    BackgroundColor $DEPTH1_BACKGROUND_COLOR
 !endprocedure
 
 !procedure depth2_style()
-    BackgroundColor DEPTH2_BACKGROUND_COLOR
+    BackgroundColor $DEPTH2_BACKGROUND_COLOR
 !endprocedure
 
 !procedure depth3_style()
-    BackgroundColor DEPTH3_BACKGROUND_COLOR
+    BackgroundColor $DEPTH3_BACKGROUND_COLOR
 !endprocedure
 
 <style>
 mindmapDiagram {
     node {
-        FontSize DEFAULT_FONT_SIZE
+        FontSize $NODE_FONT_SIZE
         Shadowing $SHADOWING
     }
     rootNode {
