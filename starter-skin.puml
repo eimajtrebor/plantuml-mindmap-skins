@@ -30,6 +30,10 @@
     !LINE_COLOR = DEFAULT_LINE_COLOR
 !endif
 
+!if (%not(%variable_exists("SHADOWING")))
+    !SHADOWING = DEFAULT_SHADOWING
+!endif
+
 !procedure arrow_style()
     LineThickness LINE_THICKNESS
     LineColor LINE_COLOR
@@ -55,7 +59,7 @@
 mindmapDiagram {
     node {
         FontSize DEFAULT_FONT_SIZE
-        Shadowing DEFAULT_SHADOWING
+        Shadowing SHADOWING
     }
     rootNode {
         root_style()
