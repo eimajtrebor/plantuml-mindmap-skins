@@ -3,7 +3,7 @@
 !define DEFAULT_FONT_SIZE 14
 !define DEFAULT_LINE_THICKNESS 1
 !define DEFAULT_LINE_COLOR #333333
-!define DEFAULT_BOX_SHADOWING 1
+!define DEFAULT_SHADOWING 1
 !define DEFAULT_BACKGROUND_COLOR LightYellow
 
 !if (%not(%variable_exists("$NODE_FONT_SIZE")))
