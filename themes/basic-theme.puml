@@ -5,3 +5,5 @@
 !$DEPTH2_BACKGROUND_COLOR = LightYellow
 !$DEPTH3_BACKGROUND_COLOR = LightYellow
 !$LINE_THICKNESS = 1
+
+@enduml
