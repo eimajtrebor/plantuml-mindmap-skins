@@ -7,6 +7,7 @@
 !define DEFAULT_LINE_COLOR #333333
 !define DEFAULT_SHADOWING 1
 !define DEFAULT_BACKGROUND_COLOR LightYellow
+!define DEFAULT_MARGIN 25
 
 !if (%not(%variable_exists("$LEVELS")))
     !$LEVELS = DEFAULT_LEVELS
@@ -52,6 +53,10 @@
     !$SHADOWING = DEFAULT_SHADOWING
 !endif
 
+!if (%not(%variable_exists("$MARGIN")))
+    !$MARGIN = DEFAULT_MARGIN
+!endif
+
 !procedure arrow_style()
     LineThickness $LINE_THICKNESS
     LineColor $LINE_COLOR
@@ -93,6 +98,7 @@
 mindmapDiagram {
     node {
         Shadowing $SHADOWING
+        Margin $MARGIN
     }
     rootNode {
         root_style()
