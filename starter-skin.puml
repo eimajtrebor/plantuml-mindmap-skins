@@ -79,7 +79,7 @@
 !endprocedure
 
 !function $get_background($level)
-    !$index = %intval($level)
+    !$index = %intval($level)+1
     !$background = $THEME.colours[$index]
     !return $background
 !endfunction
