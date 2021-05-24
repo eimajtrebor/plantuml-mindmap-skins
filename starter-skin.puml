@@ -42,10 +42,6 @@
     !$BGCOLOR_DEPTH_4 = BGCOLOR_DEFAULT
 !endif
 
-!if (%not(%variable_exists("$BGCOLOR_DEPTH_4")))
-    !$BGCOLOR_DEPTH_4 = BGCOLOR_DEFAULT
-!endif
-
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_5")))
     !$BGCOLOR_DEPTH_5 = BGCOLOR_DEFAULT
 !endif
