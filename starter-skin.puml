@@ -10,7 +10,7 @@
 !define DEFAULT_BGCOLOR LightYellow
 
 !if (%not(%variable_exists("$BGCOLOR_DEFAULT")))
-    !$BGCOLOR_DEFAULT = $DEFAULT_BGCOLOR
+    !$BGCOLOR_DEFAULT = DEFAULT_BGCOLOR
 !endif
 
 !if (%not(%variable_exists("$LEVELS")))
@@ -26,35 +26,35 @@
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_ROOT")))
-    !$BGCOLOR_ROOT = BGCOLOR_DEFAULT
+    !$BGCOLOR_ROOT = $BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_1")))
-    !$BGCOLOR_DEPTH_1 = BGCOLOR_DEFAULT
+    !$BGCOLOR_DEPTH_1 = $BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_2")))
-    !$BGCOLOR_DEPTH_2 = BGCOLOR_DEFAULT
+    !$BGCOLOR_DEPTH_2 = $BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_3")))
-    !$BGCOLOR_DEPTH_3 = BGCOLOR_DEFAULT
+    !$BGCOLOR_DEPTH_3 = $BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_4")))
-    !$BGCOLOR_DEPTH_4 = BGCOLOR_DEFAULT
+    !$BGCOLOR_DEPTH_4 = $BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_5")))
-    !$BGCOLOR_DEPTH_5 = BGCOLOR_DEFAULT
+    !$BGCOLOR_DEPTH_5 = $BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_6")))
-    !$BGCOLOR_DEPTH_6 = BGCOLOR_DEFAULT
+    !$BGCOLOR_DEPTH_6 = $BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_7")))
-    !$BGCOLOR_DEPTH_7 = BGCOLOR_DEFAULT
+    !$BGCOLOR_DEPTH_7 = $BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$LINE_THICKNESS")))
