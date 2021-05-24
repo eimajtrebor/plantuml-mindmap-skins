@@ -7,8 +7,11 @@
 !define DEFAULT_LINE_COLOR #333333
 !define DEFAULT_SHADOWING 1
 !define DEFAULT_MARGIN 25
+!define DEFAULT_BGCOLOR LightYellow
 
-!define BGCOLOR_DEFAULT LightYellow
+!if (%not(%variable_exists("$BGCOLOR_DEFAULT")))
+    !$BGCOLOR_DEFAULT = $DEFAULT_BGCOLOR
+!endif
 
 !if (%not(%variable_exists("$LEVELS")))
     !$LEVELS = DEFAULT_LEVELS
@@ -86,7 +89,7 @@
 !endprocedure
 
 !function $get_background($level)
-    !$variable_name = "BGCOLOR_DEPTH_" + 1
+    !$variable_name = "BGCOLOR_DEPTH_" + $level
     !$background = %get_variable_value($variable_name)
     !return $background
 !endfunction
