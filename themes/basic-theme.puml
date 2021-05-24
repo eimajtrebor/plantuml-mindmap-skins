@@ -1,10 +1,29 @@
-@startuml
+@startuml "yellow-theme"
 
-!$ROOT_BACKGROUND_COLOR = LightYellow
-!$DEPTH1_BACKGROUND_COLOR = LightYellow
-!$DEPTH2_BACKGROUND_COLOR = LightYellow
-!$DEPTH3_BACKGROUND_COLOR = LightYellow
+' Colours
+!$BGCOLOR_DEFAULT = White
+
+' Theme
+!$THEME = {
+    "levels": [
+        { "fg": "Black", "bg": "#FACC15" },
+        { "fg": "Black", "bg": "#FDE047" },
+        { "fg": "Black", "bg": "#FEF08A" },
+        { "fg": "Black", "bg": "#FEF9C3" },
+        { "fg": "Black", "bg": "#FEFCE8" },
+        { "fg": "Black", "bg": "#FEFCE8" },
+        { "fg": "Black", "bg": "White" },
+        { "fg": "Black", "bg": "White" }
+    ] 
+}
+
+!$FONT_SIZE = 12
+
+' Other elements
 !$LINE_THICKNESS = 1
 !$SHADOWING = 0
+!$MARGIN = 5
+
+!include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/starter-skin.puml
 
 @enduml
