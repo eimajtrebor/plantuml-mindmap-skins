@@ -80,7 +80,7 @@
 !endprocedure
 
 !procedure root_style()
-    BackgroundColor $ROOT_BACKGROUND_COLOR
+    BackgroundColor $BGCOLOR_ROOT
     FontSize $calc_font(0)
 !endprocedure
 
