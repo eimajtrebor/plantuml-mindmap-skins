@@ -6,8 +6,9 @@
 !define DEFAULT_LINE_THICKNESS 1
 !define DEFAULT_LINE_COLOR #333333
 !define DEFAULT_SHADOWING 1
-!define DEFAULT_BACKGROUND_COLOR LightYellow
 !define DEFAULT_MARGIN 25
+
+!define BGCOLOR_DEFAULT LightYellow
 
 !if (%not(%variable_exists("$LEVELS")))
     !$LEVELS = DEFAULT_LEVELS
@@ -21,24 +22,40 @@
     !$FONT_SCALE = DEFAULT_FONT_SCALE
 !endif
 
-!if (%not(%variable_exists("$ROOT_BACKGROUND_COLOR")))
-    !$ROOT_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
+!if (%not(%variable_exists("$BGCOLOR_ROOT")))
+    !$BGCOLOR_ROOT = BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_1")))
-    !$BGCOLOR_DEPTH_1 = DEFAULT_BACKGROUND_COLOR
+    !$BGCOLOR_DEPTH_1 = BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_2")))
-    !$BGCOLOR_DEPTH_2 = DEFAULT_BACKGROUND_COLOR
+    !$BGCOLOR_DEPTH_2 = BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_3")))
-    !$BGCOLOR_DEPTH_3 = DEFAULT_BACKGROUND_COLOR
+    !$BGCOLOR_DEPTH_3 = BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_DEPTH_4")))
-    !$BGCOLOR_DEPTH_4 = DEFAULT_BACKGROUND_COLOR
+    !$BGCOLOR_DEPTH_4 = BGCOLOR_DEFAULT
+!endif
+
+!if (%not(%variable_exists("$BGCOLOR_DEPTH_4")))
+    !$BGCOLOR_DEPTH_4 = BGCOLOR_DEFAULT
+!endif
+
+!if (%not(%variable_exists("$BGCOLOR_DEPTH_5")))
+    !$BGCOLOR_DEPTH_5 = BGCOLOR_DEFAULT
+!endif
+
+!if (%not(%variable_exists("$BGCOLOR_DEPTH_6")))
+    !$BGCOLOR_DEPTH_6 = BGCOLOR_DEFAULT
+!endif
+
+!if (%not(%variable_exists("$BGCOLOR_DEPTH_7")))
+    !$BGCOLOR_DEPTH_7 = BGCOLOR_DEFAULT
 !endif
 
 !if (%not(%variable_exists("$LINE_THICKNESS")))
