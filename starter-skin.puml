@@ -95,7 +95,7 @@
 !endfunction
 
 !function $get_fontcolor($level)
-    !$index = %intval($level)-1
+    !$index = %intval($level)
     !$color = $THEME.colours[$index].fg
     !return $color
 !endfunction
