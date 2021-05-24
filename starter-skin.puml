@@ -88,13 +88,15 @@
 !endprocedure
 
 !procedure $depth_styles()
-    !$index = 1
+    !$index = 0
     !foreach $level in $THEME.levels
+    !if ($index > 0)
     :depth($index) {
         BackgroundColor $level.bg
         FontColor $level.fg
         FontSize $calc_font($index)
     }
+    !endif
     !$index = $index + 1
     !endfor
 !endprocedure
