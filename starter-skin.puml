@@ -13,6 +13,24 @@
     !$BGCOLOR_DEFAULT = DEFAULT_BGCOLOR
 !endif
 
+!DEFAULT_THEME = {
+    "root": "$BGCOLOR_DEFAULT",
+    "colours": [
+        "$BGCOLOR_DEFAULT",
+        "$BGCOLOR_DEFAULT",
+        "$BGCOLOR_DEFAULT",
+        "$BGCOLOR_DEFAULT",
+        "$BGCOLOR_DEFAULT",
+        "$BGCOLOR_DEFAULT",
+        "$BGCOLOR_DEFAULT",
+        "$BGCOLOR_DEFAULT"
+    ]
+}
+
+!if (%not(%variable_exists("$THEME")))
+    !$THEME = DEFAULT_THEME
+!endif
+
 !if (%not(%variable_exists("$LEVELS")))
     !$LEVELS = DEFAULT_LEVELS
 !endif
@@ -26,35 +44,7 @@
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_ROOT")))
-    !$BGCOLOR_ROOT = $BGCOLOR_DEFAULT
-!endif
-
-!if (%not(%variable_exists("$BGCOLOR_DEPTH_1")))
-    !$BGCOLOR_DEPTH_1 = $BGCOLOR_DEFAULT
-!endif
-
-!if (%not(%variable_exists("$BGCOLOR_DEPTH_2")))
-    !$BGCOLOR_DEPTH_2 = $BGCOLOR_DEFAULT
-!endif
-
-!if (%not(%variable_exists("$BGCOLOR_DEPTH_3")))
-    !$BGCOLOR_DEPTH_3 = $BGCOLOR_DEFAULT
-!endif
-
-!if (%not(%variable_exists("$BGCOLOR_DEPTH_4")))
-    !$BGCOLOR_DEPTH_4 = $BGCOLOR_DEFAULT
-!endif
-
-!if (%not(%variable_exists("$BGCOLOR_DEPTH_5")))
-    !$BGCOLOR_DEPTH_5 = $BGCOLOR_DEFAULT
-!endif
-
-!if (%not(%variable_exists("$BGCOLOR_DEPTH_6")))
-    !$BGCOLOR_DEPTH_6 = $BGCOLOR_DEFAULT
-!endif
-
-!if (%not(%variable_exists("$BGCOLOR_DEPTH_7")))
-    !$BGCOLOR_DEPTH_7 = $BGCOLOR_DEFAULT
+    !$BGCOLOR_ROOT = $THEME.root
 !endif
 
 !if (%not(%variable_exists("$LINE_THICKNESS")))
@@ -89,8 +79,8 @@
 !endprocedure
 
 !function $get_background($level)
-    !$variable_name = "$BGCOLOR_DEPTH_" + $level
-    !$background = %get_variable_value($variable_name)
+    !$index = %intval($level)
+    !$background = $THEME.colours[$index]
     !return $background
 !endfunction
 
