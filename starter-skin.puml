@@ -1,6 +1,5 @@
 @startuml "starter-skin"
 
-!define DEFAULT_LEVELS 7
 !define DEFAULT_FONT_SIZE 12
 !define DEFAULT_FONT_SCALE 2
 !define DEFAULT_LINE_THICKNESS 1
@@ -19,7 +18,7 @@
 !endif
 
 !DEFAULT_THEME = {
-    "colors": [
+    "levels": [
         { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
         { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
         { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
@@ -35,9 +34,15 @@
     !$THEME = DEFAULT_THEME
 !endif
 
-!if (%not(%variable_exists("$LEVELS")))
-    !$LEVELS = DEFAULT_LEVELS
-!endif
+!function $get_levels()
+    !$count = 0
+    !foreach $level in $THEME.levels
+        !$count = $count + 1
+    !endfor 
+    !return $count
+!endfunction
+
+!$LEVELS = $get_levels()
 
 !if (%not(%variable_exists("$FONT_SIZE")))
     !$FONT_SIZE = DEFAULT_FONT_SIZE
@@ -48,11 +53,11 @@
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_ROOT")))
-    !$BGCOLOR_ROOT = $THEME.colors[0].bg
+    !$BGCOLOR_ROOT = $THEME.levels[0].bg
 !endif
 
 !if (%not(%variable_exists("$FGCOLOR_ROOT")))
-    !$FGCOLOR_ROOT = $THEME.colors[0].fg
+    !$FGCOLOR_ROOT = $THEME.levels[0].fg
 !endif
 
 !if (%not(%variable_exists("$LINE_THICKNESS")))
@@ -71,34 +76,28 @@
     !$MARGIN = DEFAULT_MARGIN
 !endif
 
-!procedure arrow_style()
+!procedure $arrow_style()
     LineThickness $LINE_THICKNESS
     LineColor $LINE_COLOR
 !endprocedure
 
-!procedure root_style()
+!procedure $root_style()
     BackgroundColor $BGCOLOR_ROOT
     FontColor $FGCOLOR_ROOT
     FontSize $calc_font(0)
 !endprocedure
 
-!procedure depth_style($level)
-    BackgroundColor $get_background($level)
-    FontColor $get_fontcolor($level)
-    FontSize $calc_font($level)
+!procedure $depth_styles()
+    !$index = 1
+    !foreach $level in $THEME.levels
+    :depth($index) {
+        BackgroundColor $level.bg
+        FontColor $level.fg
+        FontSize $calc_font($index)
+    }
+    !$index = $index + 1
+    !endfor
 !endprocedure
-
-!function $get_background($level)
-    !$index = %intval($level)
-    !$background = $THEME.colours[$index]
-    !return $background
-!endfunction
-
-!function $get_fontcolor($level)
-    !$index = %intval($level)
-    !$color = $THEME.colours[$index].fg
-    !return $color
-!endfunction
 
 !function $calc_font($level)
     !$scale = %intval($FONT_SCALE)
@@ -114,31 +113,11 @@ mindmapDiagram {
         Margin $MARGIN
     }
     rootNode {
-        root_style()
+        $root_style()
     }
-    :depth(1) {
-        depth_style(1)
-    }
-    :depth(2) {
-        depth_style(2)
-    }
-    :depth(3) {
-        depth_style(3)
-    }
-    :depth(4) {
-        depth_style(4)
-    }
-    :depth(5) {
-        depth_style(5)
-    }
-    :depth(6) {
-        depth_style(6)
-    }
-    :depth(7) {
-        depth_style(7)
-    }
+    $depth_styles()
     arrow {
-        arrow_style()
+        $arrow_style()
     }
 }
 </style>
