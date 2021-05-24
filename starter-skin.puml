@@ -89,7 +89,7 @@
 !endprocedure
 
 !function $get_background($level)
-    !$variable_name = "BGCOLOR_DEPTH_" + $level
+    !$variable_name = "$BGCOLOR_DEPTH_" + $level
     !$background = %get_variable_value($variable_name)
     !return $background
 !endfunction
