@@ -1,6 +1,6 @@
 @startuml "starter-skin"
 
-!define DEFAULT_LEVELS 4
+!define DEFAULT_LEVELS 7
 !define DEFAULT_FONT_SIZE 12
 !define DEFAULT_FONT_SCALE 2
 !define DEFAULT_LINE_THICKNESS 1
@@ -8,22 +8,26 @@
 !define DEFAULT_SHADOWING 1
 !define DEFAULT_MARGIN 25
 !define DEFAULT_BGCOLOR LightYellow
+!define DEFAULT_FGCOLOR Black
 
 !if (%not(%variable_exists("$BGCOLOR_DEFAULT")))
     !$BGCOLOR_DEFAULT = DEFAULT_BGCOLOR
 !endif
 
+!if (%not(%variable_exists("$FGCOLOR_DEFAULT")))
+    !$FGCOLOR_DEFAULT = DEFAULT_FGCOLOR
+!endif
+
 !DEFAULT_THEME = {
-    "root": "$BGCOLOR_DEFAULT",
-    "colours": [
-        "$BGCOLOR_DEFAULT",
-        "$BGCOLOR_DEFAULT",
-        "$BGCOLOR_DEFAULT",
-        "$BGCOLOR_DEFAULT",
-        "$BGCOLOR_DEFAULT",
-        "$BGCOLOR_DEFAULT",
-        "$BGCOLOR_DEFAULT",
-        "$BGCOLOR_DEFAULT"
+    "colors": [
+        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
+        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
+        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
+        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
+        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
+        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
+        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
+        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" }
     ]
 }
 
@@ -44,7 +48,11 @@
 !endif
 
 !if (%not(%variable_exists("$BGCOLOR_ROOT")))
-    !$BGCOLOR_ROOT = $THEME.root
+    !$BGCOLOR_ROOT = $THEME.colors[0].bg
+!endif
+
+!if (%not(%variable_exists("$FGCOLOR_ROOT")))
+    !$FGCOLOR_ROOT = $THEME.colors[0].fg
 !endif
 
 !if (%not(%variable_exists("$LINE_THICKNESS")))
@@ -70,11 +78,13 @@
 
 !procedure root_style()
     BackgroundColor $BGCOLOR_ROOT
+    FontColor $FGCOLOR_ROOT
     FontSize $calc_font(0)
 !endprocedure
 
 !procedure depth_style($level)
     BackgroundColor $get_background($level)
+    FontColor $get_fontcolor($level)
     FontSize $calc_font($level)
 !endprocedure
 
@@ -82,6 +92,12 @@
     !$index = %intval($level)-1
     !$background = $THEME.colours[$index]
     !return $background
+!endfunction
+
+!function $get_fontcolor($level)
+    !$index = %intval($level)-1
+    !$color = $THEME.colours[$index].fg
+    !return $color
 !endfunction
 
 !function $calc_font($level)
