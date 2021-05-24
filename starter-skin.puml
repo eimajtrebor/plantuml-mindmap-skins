@@ -25,20 +25,20 @@
     !$ROOT_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("$DEPTH1_BACKGROUND_COLOR")))
-    !$DEPTH1_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
+!if (%not(%variable_exists("$BGCOLOR_DEPTH_1")))
+    !$BGCOLOR_DEPTH_1 = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("$DEPTH2_BACKGROUND_COLOR")))
-    !$DEPTH2_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
+!if (%not(%variable_exists("$BGCOLOR_DEPTH_2")))
+    !$BGCOLOR_DEPTH_2 = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("$DEPTH3_BACKGROUND_COLOR")))
-    !$DEPTH3_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
+!if (%not(%variable_exists("$BGCOLOR_DEPTH_3")))
+    !$BGCOLOR_DEPTH_3 = DEFAULT_BACKGROUND_COLOR
 !endif
 
-!if (%not(%variable_exists("$DEPTH4_BACKGROUND_COLOR")))
-    !$DEPTH4_BACKGROUND_COLOR = DEFAULT_BACKGROUND_COLOR
+!if (%not(%variable_exists("$BGCOLOR_DEPTH_4")))
+    !$BGCOLOR_DEPTH_4 = DEFAULT_BACKGROUND_COLOR
 !endif
 
 !if (%not(%variable_exists("$LINE_THICKNESS")))
@@ -67,25 +67,16 @@
     FontSize $calc_font(0)
 !endprocedure
 
-!procedure depth1_style()
-    BackgroundColor $DEPTH1_BACKGROUND_COLOR
-    FontSize $calc_font(1)
+!procedure depth_style($level)
+    BackgroundColor $get_background($level)
+    FontSize $calc_font($level)
 !endprocedure
 
-!procedure depth2_style()
-    BackgroundColor $DEPTH2_BACKGROUND_COLOR
-    FontSize $calc_font(2)
-!endprocedure
-
-!procedure depth3_style()
-    BackgroundColor $DEPTH3_BACKGROUND_COLOR
-    FontSize $calc_font(3)
-!endprocedure
-
-!procedure depth4_style()
-    BackgroundColor $DEPTH4_BACKGROUND_COLOR
-    FontSize $calc_font(4)
-!endprocedure
+!function $get_background($level)
+    !$variable_name = "BGCOLOR_DEPTH_" + 1
+    !$background = %get_variable_value($variable_name)
+    !return $background
+!endfunction
 
 !function $calc_font($level)
     !$scale = %intval($FONT_SCALE)
@@ -104,16 +95,25 @@ mindmapDiagram {
         root_style()
     }
     :depth(1) {
-        depth1_style()
+        depth_style(1)
     }
     :depth(2) {
-        depth2_style()
+        depth_style(2)
     }
     :depth(3) {
-        depth3_style()
+        depth_style(3)
     }
     :depth(4) {
-        depth4_style()
+        depth_style(4)
+    }
+    :depth(5) {
+        depth_style(5)
+    }
+    :depth(6) {
+        depth_style(6)
+    }
+    :depth(7) {
+        depth_style(7)
     }
     arrow {
         arrow_style()
