@@ -1,0 +1,26 @@
+@startuml "theme"
+
+skinparam ActivityBackgroundColor LightYellow
+skinparam ActivityDiamondBackgroundColor LightYellow
+skinparam DefaultFontSize 14
+skinparam Shadowing false
+skinparam Padding 10
+
+' ActivityBackgroundColor
+' ActivityBarColor
+' ActivityBorderColor
+' ActivityBorderThickness
+' ActivityDiamondBackgroundColor
+' ActivityDiamondBorderColor
+' ActivityDiamondFontColor
+' ActivityDiamondFontName
+' ActivityDiamondFontSize
+' ActivityDiamondFontStyle
+' ActivityEndColor
+' ActivityFontColor
+' ActivityFontName
+' ActivityFontSize
+' ActivityFontStyle
+' ActivityStartColor
+
+@enduml
