@@ -23,22 +23,12 @@ This repo contains a default skin for use with the PlantUML mindmap diagram. To 
 
 You can change the look of the skin by overriding some of the variables that are included in the skin. Place these overrides at the top of your mindmap file.
 
+You can see an example of variable overrides in the themes directory.
+
 ```plantuml
 @startmindmap "mymindmap"
 
-!$LEVELS = 5
-!$FONT_SIZE = 14
-!$FONT_SCALE = 2
-!$ROOT_BACKGROUND_COLOR = LightYellow
-!$DEPTH1_BACKGROUND_COLOR = LightYellow
-!$DEPTH2_BACKGROUND_COLOR = LightYellow
-!$DEPTH3_BACKGROUND_COLOR = LightYellow
-!$DEPTH4_BACKGROUND_COLOR = LightYellow
-!$LINE_THICKNESS = 1
-!$LINE_COLOR = #333333
-!$SHADOWING = 1
-
-!include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/starter-skin.puml
+!include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/themes/basic-theme.puml
 
 * Idea
 
@@ -48,8 +38,5 @@ You can change the look of the skin by overriding some of the variables that are
     ***_ No box node
 
 @endmindmap
+
 ```
-
-## Themes
-
-For an even simpler way of working, include the variables in a separate file and include the file above the starter skin include.
