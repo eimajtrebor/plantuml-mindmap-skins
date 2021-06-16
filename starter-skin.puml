@@ -6,6 +6,7 @@
 !define DEFAULT_LINE_COLOR #333333
 !define DEFAULT_SHADOWING 1
 !define DEFAULT_MARGIN 25
+!define DEFAULT_MARGIN 10
 !define DEFAULT_BGCOLOR LightYellow
 !define DEFAULT_FGCOLOR Black
 
@@ -38,7 +39,7 @@
     !$count = 0
     !foreach $level in $THEME.levels
         !$count = $count + 1
-    !endfor 
+    !endfor
     !return $count
 !endfunction
 
@@ -74,6 +75,10 @@
 
 !if (%not(%variable_exists("$MARGIN")))
     !$MARGIN = DEFAULT_MARGIN
+!endif
+
+!if (%not(%variable_exists("$PADDING")))
+    !$PADDING = DEFAULT_PADDING
 !endif
 
 !procedure $arrow_style()
@@ -113,6 +118,7 @@ mindmapDiagram {
     node {
         Shadowing $SHADOWING
         Margin $MARGIN
+        Padding $PADDING
     }
     rootNode {
         $root_style()
