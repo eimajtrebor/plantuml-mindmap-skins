@@ -23,7 +23,6 @@
 !$LINE_THICKNESS = 1
 !$SHADOWING = 0
 !$MARGIN = 10
-
-!include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/starter-skin.puml
+!$PADDING = 10
 
 @enduml
