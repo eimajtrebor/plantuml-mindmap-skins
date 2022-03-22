@@ -13,8 +13,9 @@ This repo contains a default skin for use with the PlantUML mindmap diagram. To 
 
     ** Node 1
     ** Node 2
-    *** Sub-node 1
-    ***_ No box node
+    
+      *** Sub-node 1
+      ***_ No box node
 
 @endmindmap
 ```
@@ -29,13 +30,15 @@ You can see an example of variable overrides in the themes directory.
 @startmindmap "mymindmap"
 
 !include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/themes/basic-theme.puml
+!include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/starter-skin.puml
 
 * Idea
 
     ** Node 1
     ** Node 2
-    *** Sub-node 1
-    ***_ No box node
+    
+      *** Sub-node 1
+      ***_ No box node
 
 @endmindmap
 
