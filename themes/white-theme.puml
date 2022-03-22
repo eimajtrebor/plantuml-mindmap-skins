@@ -1,0 +1,12 @@
+@startuml "yellow-theme"
+!$custom_config = {
+    "levels": [
+        { "bgcolor": "White", "fgcolor": "#000", "fontsize": 14 },
+        { "bgcolor": "White", "fgcolor": "#000" }
+    ],
+    "arrow": { "thickness": 1, "color": "#333", "style": 0 },
+    "layout": { "padding": 12, "margin": 10, "shadowing": 0, "roundcorner": 25 },
+    "leaf": {},
+    "boxless": {}
+}
+@enduml
