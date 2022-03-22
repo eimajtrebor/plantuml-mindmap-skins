@@ -1,43 +1,24 @@
 @startuml "starter-skin"
-
-!define DEFAULT_FONT_SIZE 12
-!define DEFAULT_FONT_SCALE 2
-!define DEFAULT_LINE_THICKNESS 1
-!define DEFAULT_LINE_COLOR #333333
-!define DEFAULT_SHADOWING 1
-!define DEFAULT_MARGIN 25
-!define DEFAULT_MARGIN 10
-!define DEFAULT_BGCOLOR LightYellow
-!define DEFAULT_FGCOLOR Black
-
-!if (%not(%variable_exists("$BGCOLOR_DEFAULT")))
-    !$BGCOLOR_DEFAULT = DEFAULT_BGCOLOR
-!endif
-
-!if (%not(%variable_exists("$FGCOLOR_DEFAULT")))
-    !$FGCOLOR_DEFAULT = DEFAULT_FGCOLOR
-!endif
-
-!DEFAULT_THEME = {
+!$default_config = {
     "levels": [
-        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
-        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
-        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
-        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
-        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
-        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
-        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" },
-        { "fg": "$FGCOLOR_DEFAULT", "bg": "$BGCOLOR_DEFAULT" }
-    ]
+        { "bgcolor": "LightYellow", "fgcolor": "#000", "fontsize": 12 },
+        { "bgcolor": "LightYellow", "fgcolor": "#333" }
+    ],
+    "arrow": { "thickness": 1, "color": "#333", "style": 0 },
+    "layout": { "padding": 12, "margin": 10, "shadowing": 0, "roundcorner": 25 },
+    "leaf": { "roundcorner": 0 },
+    "boxless": { "color": "#333" }
 }
 
-!if (%not(%variable_exists("$THEME")))
-    !$THEME = DEFAULT_THEME
+' Load custom config if it exists
+!$config = $default_config
+!if (%variable_exists("$custom_config"))
+    !$config = $custom_config
 !endif
 
 !function $get_levels()
     !$count = 0
-    !foreach $level in $THEME.levels
+    !foreach $level in $config.levels
         !$count = $count + 1
     !endfor
     !return $count
@@ -45,88 +26,74 @@
 
 !$LEVELS = $get_levels()
 
-!if (%not(%variable_exists("$FONT_SIZE")))
-    !$FONT_SIZE = DEFAULT_FONT_SIZE
-!endif
-
-!if (%not(%variable_exists("$FONT_SCALE")))
-    !$FONT_SCALE = DEFAULT_FONT_SCALE
-!endif
-
-!if (%not(%variable_exists("$BGCOLOR_ROOT")))
-    !$BGCOLOR_ROOT = $THEME.levels[0].bg
-!endif
-
-!if (%not(%variable_exists("$FGCOLOR_ROOT")))
-    !$FGCOLOR_ROOT = $THEME.levels[0].fg
-!endif
-
-!if (%not(%variable_exists("$LINE_THICKNESS")))
-    !$LINE_THICKNESS = DEFAULT_LINE_THICKNESS
-!endif
-
-!if (%not(%variable_exists("$LINE_COLOR")))
-    !$LINE_COLOR = DEFAULT_LINE_COLOR
-!endif
-
-!if (%not(%variable_exists("$SHADOWING")))
-    !$SHADOWING = DEFAULT_SHADOWING
-!endif
-
-!if (%not(%variable_exists("$MARGIN")))
-    !$MARGIN = DEFAULT_MARGIN
-!endif
-
-!if (%not(%variable_exists("$PADDING")))
-    !$PADDING = DEFAULT_PADDING
-!endif
-
-!procedure $arrow_style()
-    LineThickness $LINE_THICKNESS
-    LineColor $LINE_COLOR
+' Base styles
+!procedure $base_styles()
+    node {
+        FontSize $config.levels[0].fontsize
+        FontColor $config.levels[0].fgcolor
+        BackgroundColor $config.levels[0].bgcolor
+        Shadowing $config.layout.shadowing
+        Margin $config.layout.margin
+        Padding $config.layout.padding
+        RoundCorner $config.layout.roundcorner
+    }
 !endprocedure
 
-!procedure $root_style()
-    BackgroundColor $BGCOLOR_ROOT
-    FontColor $FGCOLOR_ROOT
-    FontSize $calc_font(0)
+' Arrow styles
+!procedure $arrow_styles()
+    arrow {
+        LineThickness $config.arrow.thickness
+        LineColor $config.arrow.color
+        LineStyle $config.arrow.style
+    }
 !endprocedure
 
+' Root style
+!procedure $root_styles()
+    rootNode { 
+        BackgroundColor $config.levels[0].bgcolor
+        FontColor $config.levels[0].fgcolor
+        HorizontalAlignment center
+        MaximumWidth 100        
+    }
+!endprocedure
+
+' Leaf node styles
+!procedure $leaf_styles()
+    leafNode {
+        RoundCorner $config.leaf.roundcorner
+    }
+!endprocedure
+
+' Depth styles
 !procedure $depth_styles()
     !$index = 0
-    !foreach $level in $THEME.levels
+    !foreach $level in $config.levels
     !if ($index > 0)
     :depth($index) {
-        BackgroundColor $level.bg
-        FontColor $level.fg
-        FontSize $calc_font($index)
+        BackgroundColor $level.bgcolor
+        FontColor $level.fgcolor
     }
     !endif
     !$index = $index + 1
     !endfor
 !endprocedure
 
-!function $calc_font($level)
-    !$scale = %intval($FONT_SCALE)
-    !$factor = %intval($LEVELS) - %intval($level)
-    !$adjustment = $factor * $scale
-    !return %intval($FONT_SIZE) + $adjustment
-!endfunction
+' Boxless styles
+!procedure $boxless_styles()
+    boxless { 
+        FontColor $config.boxless.color 
+    }
+!endprocedure
 
 <style>
 mindmapDiagram {
-    node {
-        Shadowing $SHADOWING
-        Margin $MARGIN
-        Padding $PADDING
-    }
-    rootNode {
-        $root_style()
-    }
+    $base_styles()
+    $root_styles()    
+    $leaf_styles()
     $depth_styles()
-    arrow {
-        $arrow_style()
-    }
+    $arrow_styles()
+    $boxless_styles()
 }
 </style>
 @enduml
