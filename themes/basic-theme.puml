@@ -1,28 +1,12 @@
 @startuml "yellow-theme"
-
-' Colours
-!$BGCOLOR_DEFAULT = White
-
-' Theme
-!$THEME = {
+!$default_config = {
     "levels": [
-        { "fg": "Black", "bg": "#FACC15" },
-        { "fg": "Black", "bg": "#FDE047" },
-        { "fg": "Black", "bg": "#FEF08A" },
-        { "fg": "Black", "bg": "#FEF9C3" },
-        { "fg": "Black", "bg": "#FEFCE8" },
-        { "fg": "Black", "bg": "#FEFCE8" },
-        { "fg": "Black", "bg": "White" },
-        { "fg": "Black", "bg": "White" }
-    ] 
+        { "bgcolor": "LightYellow", "fgcolor": "#000", "fontsize": 12 },
+        { "bgcolor": "LightYellow", "fgcolor": "#333" }
+    ],
+    "arrow": { "thickness": 1, "color": "#333", "style": 0 },
+    "layout": { "padding": 12, "margin": 10, "shadowing": 0, "roundcorner": 25 },
+    "leaf": { "roundcorner": 0 },
+    "boxless": { "color": "#333" }
 }
-
-!$FONT_SIZE = 12
-
-' Other elements
-!$LINE_THICKNESS = 1
-!$SHADOWING = 0
-!$MARGIN = 10
-!$PADDING = 10
-
 @enduml
