@@ -1,0 +1,27 @@
+@startmindmap "Example"
+
+!include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/themes/white-theme.puml
+!include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/starter-skin.puml
+
+' skinparam Monochrome true
+
+* This is word wrapped
+
+    ** Child node 1 and is not wrapped
+    ** Child node 2
+
+        ***_ Boxless
+
+' header
+' Test
+' endheader
+
+' footer
+' footer
+' endfooter
+
+' title title
+' caption caption
+
+
+@endmindmap
