@@ -29,13 +29,13 @@ You can see an example of variable overrides in the themes directory.
 @startmindmap "mymindmap"
 !$custom_config = {
     "levels": [
-        { "bgcolor": "LightYellow", "fgcolor": "#000", "fontsize": 16 },
+        { "bgcolor": "White", "fgcolor": "#000", "fontsize": 16 },
         { "bgcolor": "White", "fgcolor": "#000" }
     ],
     "arrow": { "thickness": 1, "color": "#333", "style": 0 },
     "layout": { "padding": 12, "margin": 10, "shadowing": 0, "roundcorner": 25 },
-    "leaf": { "roundcorner": 0 },
-    "boxless": { "color": "#333" }
+    "leaf": {},
+    "boxless": {}
 }
 !include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/starter-skin.puml
 
