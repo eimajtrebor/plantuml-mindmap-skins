@@ -9,4 +9,6 @@
     "leaf": { "roundcorner": 0 },
     "boxless": { "color": "#333" }
 }
+
+!include https://raw.githubusercontent.com/eimajtrebor/plantuml-mindmap-skins/master/starter-skin.puml
 @enduml
