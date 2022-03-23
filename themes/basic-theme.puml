@@ -1,4 +1,4 @@
-@startuml "yellow-theme"
+@startuml "basic-theme.puml"
 !$custom_config = {
     "levels": [
         { "bgcolor": "LightYellow", "fgcolor": "#333", "fontsize": 16 }
