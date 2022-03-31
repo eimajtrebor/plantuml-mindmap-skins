@@ -30,7 +30,6 @@
 ' Base styles
 !procedure $base_styles()
     node {
-        FontSize $config.levels[0].fontsize
         FontColor $config.levels[0].fgcolor
         BackgroundColor $config.levels[0].bgcolor
         Shadowing $config.layout.shadowing
@@ -52,6 +51,7 @@
 ' Root style
 !procedure $root_styles()
     rootNode { 
+        FontSize $config.levels[0].fontsize
         BackgroundColor $config.levels[0].bgcolor
         FontColor $config.levels[0].fgcolor
         HorizontalAlignment $config.root.horizontalAlignment
