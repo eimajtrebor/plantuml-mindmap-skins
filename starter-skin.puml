@@ -6,6 +6,7 @@
     ],
     "arrow": { "thickness": 1, "color": "#333", "style": 0 },
     "layout": { "padding": 12, "margin": 10, "shadowing": 0, "roundcorner": 25 },
+    "root": { "horizontalAlignment": "left", "maximumWidth": 100 },
     "leaf": { "roundcorner": 0 },
     "boxless": { "color": "#333" }
 }
@@ -53,8 +54,8 @@
     rootNode { 
         BackgroundColor $config.levels[0].bgcolor
         FontColor $config.levels[0].fgcolor
-        HorizontalAlignment center
-        MaximumWidth 100        
+        HorizontalAlignment $config.root.horizontalAlignment
+        MaximumWidth $config.root.maximumWidth        
     }
 !endprocedure
 
