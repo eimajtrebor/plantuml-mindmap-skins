@@ -74,6 +74,7 @@
     :depth($index) {
         BackgroundColor $level.bgcolor
         FontColor $level.fgcolor
+        FontSize $level.fontsize
     }
     !endif
     !$index = $index + 1
